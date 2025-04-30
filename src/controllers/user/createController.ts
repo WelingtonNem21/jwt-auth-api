@@ -8,6 +8,9 @@ class CreateController {
 
     const { nome, email, senha } = req.body as { nome: string, email: string, senha: string }
 
+    if (!nome || !email || !senha) {
+      throw new Error("por favor, precher os caompos")
+    }
 
     const createServices = new CreateServices()
 

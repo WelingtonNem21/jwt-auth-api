@@ -1,11 +1,9 @@
 import { Router, Request, Response } from 'express'
+import { CreateController } from './controllers/user/createController'
 
 const routes = Router()
 
-routes.get('/', (req: Request, res: Response) => {
-
-  throw new Error("teste01")
-})
+routes.post('/login', new CreateController().handle)
 
 
 export default routes

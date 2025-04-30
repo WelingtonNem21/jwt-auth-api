@@ -1,4 +1,5 @@
 import { Response, Request } from 'express'
+import { CreateServices } from '../../services/user/createService'
 
 
 class CreateController {
@@ -8,11 +9,11 @@ class CreateController {
     const { nome, email, senha } = req.body as { nome: string, email: string, senha: string }
 
 
-    await res.json({
-      nome: nome,
-      email: email,
-      senha: senha
-    })
+    const createServices = new CreateServices()
+
+    const user = await createServices.excute({ nome, email, senha })
+
+    await res.json(user)
   }
 }
 
